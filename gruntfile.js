@@ -5,10 +5,10 @@ module.exports = function(grunt) {
 	var watchFiles = {
 		serverViews: ['app/views/**/*.*'],
 		serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],
-		precompiledCSS: ['public/modules/*/style/*.styl'],
 		clientViews: ['public/modules/**/views/**/*.html'],
 		clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
 		clientCSS: ['public/modules/**/*.css'],
+		clientStyl: ['public/modules/*/styl/*.styl'],
 		mochaTests: ['app/tests/**/*.js']
 	};
 
@@ -29,8 +29,8 @@ module.exports = function(grunt) {
 					livereload: true
 				}
 			},
-			precompiledCSS: {
-				files: watchFiles.precompiledCSS,
+			clientStyl: {
+				files: watchFiles.clientStyl,
 				tasks: ['stylus'],
 				options: {
 					livereload: true
