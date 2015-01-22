@@ -5,6 +5,7 @@ module.exports = function(grunt) {
 	var watchFiles = {
 		serverViews: ['app/views/**/*.*'],
 		serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],
+		precompiledCSS: ['public/modules/*/css/*.styl'],
 		clientViews: ['public/modules/**/views/**/*.html'],
 		clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
 		clientCSS: ['public/modules/**/*.css'],
@@ -24,6 +25,13 @@ module.exports = function(grunt) {
 			serverJS: {
 				files: watchFiles.serverJS,
 				tasks: ['jshint'],
+				options: {
+					livereload: true
+				}
+			},
+			precompiledCSS: {
+				files: watchFiles.precompiledCSS,
+				tasks: ['stylus'],
 				options: {
 					livereload: true
 				}
@@ -81,6 +89,19 @@ module.exports = function(grunt) {
 					'public/dist/application.min.css': '<%= applicationCSSFiles %>'
 				}
 			}
+		},
+		stylus: {
+			compile: {
+          options: {
+          	compress: true
+          },
+          files: [{
+              dest: '',
+              src: watchFiles.precompiledCSS,
+              ext: '.css',
+              expand: true
+          }]
+      }
 		},
 		nodemon: {
 			dev: {

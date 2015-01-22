@@ -1,9 +1,16 @@
-[![MEAN.JS Logo](http://meanjs.org/img/logo-small.png)](http://meanjs.org/)
+## Context
+This is a customized fork of meanjs intended for personal use.  I highly recommend going to the original repository and using that -- it will be more up to date and you can start from something cleaner.
 
-[![Build Status](https://travis-ci.org/meanjs/mean.svg?branch=master)](https://travis-ci.org/meanjs/mean)
-[![Dependencies Status](https://david-dm.org/meanjs/mean.svg)](https://david-dm.org/meanjs/mean)
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/meanjs/mean?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+I have made the following changes to the stack:
 
+### Added
+- Bunyan
+- Socket.IO
+
+### Removed
+- The Menu bullcrap
+
+## Introduction
 MEAN.JS is a full-stack JavaScript open-source solution, which provides a solid starting point for [MongoDB](http://www.mongodb.org/), [Node.js](http://www.nodejs.org/), [Express](http://expressjs.com/), and [AngularJS](http://angularjs.org/) based applications. The idea is to solve the common issues with connecting those frameworks, build a robust framework to support daily development needs, and help developers use better practices while working with popular JavaScript components.
 
 ## Before You Begin
@@ -30,23 +37,17 @@ $ npm install -g bower
 $ npm install -g grunt-cli
 ```
 
-## Downloading MEAN.JS
-There are several ways you can get the MEAN.JS boilerplate:
-
-### Yo Generator
-The recommended way would be to use the [Official Yo Generator](http://meanjs.org/generator.html), which generates the latest stable copy of the MEAN.JS boilerplate and supplies multiple sub-generators to ease your daily development cycles.
-
 ### Cloning The GitHub Repository
-You can also use Git to directly clone the MEAN.JS repository:
+Use Git to directly clone this repository:
 ```bash
-$ git clone https://github.com/meanjs/mean.git meanjs
+$ git clone https://github.com/slifty/mean.git mean
 ```
-This will clone the latest version of the MEAN.JS repository to a **meanjs** folder.
+This will clone the latest version of this repository to a **mean** folder.
 
 ### Downloading The Repository Zip File
-Another way to use the MEAN.JS boilerplate is to download a zip copy from the [master branch on GitHub](https://github.com/meanjs/mean/archive/master.zip). You can also do this using `wget` command:
+Another way to use the MEAN.JS boilerplate is to download a zip copy from the [master branch on GitHub](https://github.com/slifty/mean/archive/master.zip). You can also do this using `wget` command:
 ```bash
-$ wget https://github.com/meanjs/mean/archive/master.zip -O meanjs.zip; unzip meanjs.zip; rm meanjs.zip
+$ wget https://github.com/slifty/mean/archive/master.zip -O meanjs.zip; unzip meanjs.zip; rm meanjs.zip
 ```
 Don't forget to rename **mean-master** after your project name.
 
@@ -112,19 +113,6 @@ After you've generated the key and certificate, place them in the *config/sslcer
 ## Getting Started With MEAN.JS
 You have your application running, but there is a lot of stuff to understand. We recommend you go over the [Official Documentation](http://meanjs.org/docs.html).
 In the docs we'll try to explain both general concepts of MEAN components and give you some guidelines to help you improve your development process. We tried covering as many aspects as possible, and will keep it updated by your request. You can also help us develop and improve the documentation by checking out the *gh-pages* branch of this repository.
-
-## Community
-* Use the [Official Website](http://meanjs.org) to learn about changes and the roadmap.
-* Join #meanjs on freenode.
-* Discuss it in the new [Google Group](https://groups.google.com/d/forum/meanjs)
-* Ping us on [Twitter](http://twitter.com/meanjsorg) and [Facebook](http://facebook.com/meanjs)
-
-## Live Example
-Browse the live MEAN.JS example on [http://meanjs.herokuapp.com](http://meanjs.herokuapp.com).
-
-## Credits
-Inspired by the great work of [Madhusudhan Srinivasa](https://github.com/madhums/)
-The MEAN name was coined by [Valeri Karpov](http://blog.mongodb.org/post/49262866911/the-mean-stack-mongodb-expressjs-angularjs-and)
 
 ## License
 (The MIT License)
