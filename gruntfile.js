@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 	var watchFiles = {
 		serverViews: ['app/views/**/*.*'],
 		serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],
-		precompiledCSS: ['public/modules/*/css/*.styl'],
+		precompiledCSS: ['public/modules/*/style/*.styl'],
 		clientViews: ['public/modules/**/views/**/*.html'],
 		clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
 		clientCSS: ['public/modules/**/*.css'],
@@ -92,15 +92,21 @@ module.exports = function(grunt) {
 		},
 		stylus: {
 			compile: {
-          options: {
-          	compress: true
-          },
-          files: [{
-              dest: '',
-              src: watchFiles.precompiledCSS,
-              ext: '.css',
-              expand: true
-          }]
+        options: {
+        	compress: true
+        },
+        files: [{
+          cwd: 'public/modules',
+          dest: 'public/modules',
+          src: ['*/style/*.styl'],
+          ext: '.css',
+          expand: true,
+          rename: function(dest, src) {
+            var path = require('path');
+            var module = src.split(path.sep).slice(0,1)[0];
+            return path.join(dest, module + '/css/' + module + '.css');
+          }
+        }]
       }
 		},
 		nodemon: {
