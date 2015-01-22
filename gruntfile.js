@@ -97,9 +97,8 @@ module.exports = function(grunt) {
         },
         files: [{
           cwd: 'public/modules',
-          dest: 'public/modules',
+          dest: 'public/modules/',
           src: ['*/styl/*.styl'],
-          ext: '.css',
           expand: true,
           rename: function(dest, src) {
             var path = require('path');
