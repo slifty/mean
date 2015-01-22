@@ -92,16 +92,16 @@ module.exports = function(grunt) {
 		},
 		stylus: {
 			compile: {
-          options: {
-          	compress: true
-          },
-          files: [{
-              dest: '',
-              src: watchFiles.precompiledCSS,
-              ext: '.css',
-              expand: true
-          }]
-      }
+					options: {
+						compress: true
+					},
+					files: [{
+							dest: '',
+							src: watchFiles.precompiledCSS,
+							ext: '.css',
+							expand: true
+					}]
+			}
 		},
 		nodemon: {
 			dev: {
