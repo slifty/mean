@@ -92,21 +92,21 @@ module.exports = function(grunt) {
 		},
 		stylus: {
 			compile: {
-        options: {
-        	compress: true
-        },
-        files: [{
-          cwd: 'public/modules',
-          dest: 'public/modules/',
-          src: ['*/styl/*.styl'],
-          expand: true,
-          rename: function(dest, src) {
-            var path = require('path');
-            var module = src.split(path.sep).slice(0,1)[0];
-            return path.join(dest, module + '/css/' + module + '.css');
-          }
-        }]
-      }
+      	options: {
+      		compress: true
+      	},
+      	files: [{
+      		cwd: 'public/modules',
+      		dest: 'public/modules/',
+      		src: ['*/styl/*.styl'],
+      		expand: true,
+      		rename: function(dest, src) {
+      			var path = require('path');
+      			var module = src.split(path.sep).slice(0,1)[0];
+      			return path.join(dest, module + '/css/' + module + '.css');
+      		}
+				}]
+			}
 		},
 		nodemon: {
 			dev: {
