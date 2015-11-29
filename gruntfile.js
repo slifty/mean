@@ -5,10 +5,10 @@ module.exports = function(grunt) {
 	var watchFiles = {
 		serverViews: ['app/views/**/*.*'],
 		serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],
-		precompiledCSS: ['public/modules/*/css/*.styl'],
 		clientViews: ['public/modules/**/views/**/*.html'],
 		clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
 		clientCSS: ['public/modules/**/*.css'],
+		clientStyl: ['public/modules/*/styl/*.styl', 'config/styl/*.styl'],
 		mochaTests: ['app/tests/**/*.js']
 	};
 
@@ -29,8 +29,8 @@ module.exports = function(grunt) {
 					livereload: true
 				}
 			},
-			precompiledCSS: {
-				files: watchFiles.precompiledCSS,
+			clientStyl: {
+				files: watchFiles.clientStyl,
 				tasks: ['stylus'],
 				options: {
 					livereload: true
@@ -92,15 +92,22 @@ module.exports = function(grunt) {
 		},
 		stylus: {
 			compile: {
-					options: {
-						compress: true
-					},
-					files: [{
-							dest: '',
-							src: watchFiles.precompiledCSS,
-							ext: '.css',
-							expand: true
-					}]
+				options: {
+					compress: true,
+					paths: ['config/styl'],
+					import: ['global.styl', 'mixins.styl', 'variables.styl']
+				},
+				files: [{
+					cwd: 'public/modules',
+					dest: 'public/modules/',
+					src: ['*/styl/*.styl'],
+					expand: true,
+					rename: function(dest, src) {
+						var path = require('path');
+						var module = src.split(path.sep).slice(0,1)[0];
+						return path.join(dest, module + '/css/' + module + '.css');
+					}
+				}]
 			}
 		},
 		nodemon: {
@@ -179,7 +186,7 @@ module.exports = function(grunt) {
 	});
 
 	// Default task(s).
-	grunt.registerTask('default', ['lint', 'concurrent:default']);
+	grunt.registerTask('default', ['stylus', 'lint', 'concurrent:default']);
 
 	// Debug task.
 	grunt.registerTask('debug', ['lint', 'concurrent:debug']);

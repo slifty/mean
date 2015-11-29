@@ -14,7 +14,7 @@ angular.module('worlds').config(['$stateProvider',
 			templateUrl: 'modules/worlds/views/create-world.client.view.html'
 		}).
 		state('editWorld', {
-			url: '/world/:worldId',
+			url: '/worlds/:worldId',
 			templateUrl: 'modules/worlds/views/edit-world.client.view.html'
 		});
 	}

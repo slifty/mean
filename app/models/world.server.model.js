@@ -13,7 +13,7 @@ var WorldSchema = new Schema({
 	name: {
 		type: String,
 		default: '',
-		required: 'Please give world a name',
+		required: 'Please give this world a name',
 		trim: true
 	},
  	description: {
@@ -24,10 +24,6 @@ var WorldSchema = new Schema({
 	created: {
 		type: Date,
 		default: Date.now
-	},
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User'
 	}
 });
 
